@@ -2,8 +2,7 @@
 Scripts and code to support the Orin Nano Developer kit
 
 # NVIDIA Jetson Linux
-The current release is [R36.4.3](https://developer.nvidia.com/embedded/jetson-linux-r3643), which has a default Ubuntu 22.04 rootfs.
-R36.4.3 was the first release to fully support the Orin Nano Super.
+The current release is [R36.5.0](https://developer.nvidia.com/embedded/jetson-linux-r365), which has a default Ubuntu 22.04 rootfs.
 
 
 # Usage
