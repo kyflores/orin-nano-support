@@ -17,6 +17,7 @@ The scripts in this repo were used on Ubuntu 24.04.
 * Put the board into forced recovery and connect its USB-C port to the host.
 * Check that `0955:7523 NVIDIA Corp. APX` appears, with `lsusb`
 * Disconnect the jumper used to put the board into forced recovery mode.
+  * Or reboot from linux with `sudo systemctl reboot --force forced-recovery`
 * Flash the board.
   * `bash nano-cli.sh --flash --config=myconfig.sh`
 * Something will probably go wrong, so continue on to troubleshooting below...
@@ -65,3 +66,6 @@ I tried several different USB-C cables before initrd flash worked, and switching
 ### Board never tries to boot, always enters forced recovery.
 I got stuck in this state once, just try flashing again normally.
 Not entirely sure what caused it but I possibly the bootloader was erased and flasher was interrupted before it was replaced.
+
+### Fails on newer distros with one of the last prints being `_BASE_KERNEL_VERSION=` and `command is failed`
+Newer versions of ssh don't have DSA. Find `ota_make_recovery_img_dtb.sh : prepare_sshd_files()` and delete `ssh-keygen -t dsa -N "" -f "${_initrd_dir}/${ssh_config_dir}/ssh_host_dsa_key" >/dev/null 2>&1;check_error`. Nothing seems broken after doing this afaik.
